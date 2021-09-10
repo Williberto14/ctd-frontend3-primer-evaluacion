@@ -10,8 +10,18 @@ class Opciones extends Component {
   render() {
     return (
       <div className="opciones">
-        <Opcion key="A" letra="A" texto={this.props.decisionA} />
-        <Opcion key="B" letra="B" texto={this.props.decisionB} />
+        <Opcion
+          handleClick={this.props.handleClick}
+          key="A"
+          letra="A"
+          texto={this.props.decisionA}
+        />
+        <Opcion
+          handleClick={this.props.handleClick}
+          key="B"
+          letra="B"
+          texto={this.props.decisionB}
+        />
       </div>
     );
   }

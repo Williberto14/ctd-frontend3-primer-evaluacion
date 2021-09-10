@@ -10,7 +10,11 @@ class Opcion extends React.Component {
   render() {
     return (
       <div className="opcion">
-        <button id={this.props.letra} className="botones">
+        <button
+          id={this.props.letra}
+          className="botones"
+          onClick={this.props.handleClick}
+        >
           {this.props.letra}
         </button>
         <h2>{this.props.texto}</h2>
