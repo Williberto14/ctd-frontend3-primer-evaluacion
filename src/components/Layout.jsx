@@ -4,13 +4,12 @@ import Opciones from "./Opciones";
 import Recordatorio from "./Recordatorio";
 import data from "./data.json";
 
-let historial = [];
-
 class Layout extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      historial: [],
       ultimaSeleccion: "",
       contadorPregunta: 0,
       parteDeLaHistoria: {
@@ -35,10 +34,12 @@ class Layout extends Component {
 
   handleClick(e) {
     let vocal = e.target.id.toLowerCase();
-    historial.push(vocal.toUpperCase());
+    let auxiliar = this.state.historial;
+    auxiliar.push(vocal.toUpperCase());
 
     if (this.state.contadorPregunta <= 5) {
       this.setState({
+        historial: auxiliar,
         ultimaSeleccion: vocal,
         contadorPregunta: this.state.contadorPregunta + 1,
         parteDeLaHistoria:
@@ -63,7 +64,7 @@ class Layout extends Component {
           decisionB={this.state.parteDeLaHistoria.opciones.b}
         />
         <Recordatorio
-          arrayHistoria={historial}
+          arrayHistoria={this.state.historial}
           letra={this.state.ultimaSeleccion.toUpperCase()}
         />
       </div>
